@@ -19,23 +19,17 @@ def __create_huffman_tree(probabilities: List[float], alphabet: List[T]) -> Huff
     assert np.isclose(sum(probabilities), 1), "Probabilities must sum to 1."
     assert len(alphabet)== len(probabilities), "Alphabet and probabilities must have the same length."
 
-    # Create initial heap of nodes
     heap = [HuffmanNode(prob, sym) for prob, sym in zip(probabilities, alphabet)]
     heapq.heapify(heap)
 
-    # Iterate until the heap contains only one node
     while len(heap) > 1:
-        # Remove two nodes with the smallest probabilities
         left = heapq.heappop(heap)
         right = heapq.heappop(heap)
 
-        # Create a new internal node with these two nodes as children
         merged = HuffmanNode(left.probability + right.probability, left=left, right=right)
 
-        # Add the new node back to the heap
         heapq.heappush(heap, merged)
 
-    # The remaining node is the root of the Huffman tree
     return heap[0]
 
         
