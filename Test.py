@@ -40,7 +40,7 @@ sequence_4 = []
 for i in  range(0, len(sequence_3)-1, 2):
     sequence_4.append(sequence_3[i]+sequence_3[i+1])
 
-#old probabilities for compression
+#old codebook for compression
 third_encoding = huffman_encode(sequence_4,code_book_2)     
 
 #new probabilities for calculating statistics
